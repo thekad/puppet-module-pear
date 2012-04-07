@@ -1,7 +1,7 @@
 # -*- mode: puppet; sh-basic-offset: 4; indent-tabs-mode: nil; coding: utf-8 -*-
 # vim: tabstop=4 softtabstop=4 expandtab shiftwidth=4 fileencoding=utf-8
 
-define library::pear($ensure='present', $package='', $localdir='') {
+define pear::lib($ensure='present', $package='', $localdir='') {
 
     $pkg = $package ? {
         ''      => $name,

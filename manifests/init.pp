@@ -1,42 +1,14 @@
 # -*- mode: puppet; sh-basic-offset: 4; indent-tabs-mode: nil; coding: utf-8 -*-
 # vim: tabstop=4 softtabstop=4 expandtab shiftwidth=4 fileencoding=utf-8
 
-class library {
-
-    $pip_program = $operatingsystem ? {
-        /(Ubuntu|Debian)/ => '/usr/bin/pip',
-        /(Fedora|CentOS)/ => '/usr/bin/pip-python',
-    }
+class pear {
 
     $pear_program = '/usr/bin/pear'
 
     @package {
-        'python-virtualenv':
-            ensure => present,
-            tag    => 'pip';
-        'python-pip':
-            ensure => present,
-            tag    => 'pip';
         'php-pear':
             ensure => present,
             tag    => 'pear';
-    }
-
-    case $operatingsystem {
-        /(Ubuntu|Debian)/: {
-            @package {
-                'python-dev':
-                    ensure => present,
-                    tag    => 'pip';
-            }
-        }
-        /(Fedora|CentOS)/: {
-            @package {
-                'python-devel':
-                    ensure => present,
-                    tag    => 'pip';
-            }
-        }
     }
 }
 

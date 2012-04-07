@@ -1,39 +1,13 @@
 Overview
 ========
 
-Module to manage scripting language libraries for deployment in
-standard and non-standard directories.
-
-Planned:
-
-* python (via pip)
-* PEAR packages
-* gems (maybe? via RVM)
+Module to manage PHP pear libraries in standard and non-standard directories.
 
 
 Install
 -------
 
-Install in `<module_path>/library`
-
-
-Python (pip)
-------------
-
-Example usage:
-
-    include library
-
-    library::pip {
-        'bottle':
-            ensure     => installed,
-            virtualenv => '/usr/local/virtualenvs/proj1',
-        'Django':
-            ensure     => latest,
-            virtualenv => '/usr/local/virtualens/proj1',
-        'flask':
-            ensure => '0.7.2';
-    }
+Install in `<module_path>/pear`
 
 
 PHP (PEAR)
@@ -46,9 +20,9 @@ Example usage:
             ensure => installed;
     }
 
-    include library
+    include pear
 
-    library::pear {
+    pear::lib {
         'Proj1::Archive_Zip':
             package  => 'Archive_Zip',
             ensure   => latest,
